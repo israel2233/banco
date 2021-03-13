@@ -1,0 +1,22 @@
+/* button  {
+    position: absolute;
+    
+    color: blue;
+    
+} */
+
+
+.padd {
+    padding-top: 50px;
+    padding-right: 500px;
+    padding-bottom: 50px;
+    padding-left: 500px;
+    
+    
+  }
+
+  form{
+    border: rgb(3, 3, 3) 1px solid;
+    padding: 15px;
+    border-radius: 25px;
+  }
