@@ -21,12 +21,11 @@ def df(request):
                 if formulario_transac['tipo'] == 'CREDITO':
                     try:
                         saldo_actual = Cuentas.objects.get(numero_cuenta=formulario_transac['numero_cuenta']).saldo
-                        cuenta_t = Cuentas.objects.filter(numero_cuenta=formulario_transac['numero_cuenta'])
                         cuenta_t = Cuentas.objects.filter(numero_cuenta=formulario_transac['numero_cuenta']).update(saldo=(saldo_actual+monto_tr))
                         cuenta_o = Cuentas.objects.get(numero_cuenta=formulario_transac['numero_cuenta'])
 
                         Transacciones.objects.create(cuenta=cuenta_o, numero_transaccion=functions.generar_numero_movimiento(Cuentas.objects.all().count()), tipo='CREDITO', concepto= concepto_t, monto= monto_tr)
-                        print('si')
+                        
                         return redirect('Confirmacion')
                     except:
                         flag_error = True
@@ -42,6 +41,11 @@ def df(request):
                             saldo_actual = Cuentas.objects.get(numero_cuenta=formulario_transac['numero_cuenta']).saldo
                             if saldo_actual-monto_tr >= 0:
                                 cuenta_t = Cuentas.objects.filter(numero_cuenta=formulario_transac['numero_cuenta']).update(saldo=(saldo_actual-monto_tr))
+                                
+                                cuenta_o = Cuentas.objects.get(numero_cuenta=formulario_transac['numero_cuenta'])
+
+                                Transacciones.objects.create(cuenta=cuenta_o, numero_transaccion=functions.generar_numero_movimiento(Cuentas.objects.all().count()), tipo='DEBITO', concepto= concepto_t, monto= monto_tr)
+                                
                                 return redirect('Confirmacion')
                             else:
                                 flag_error = True
