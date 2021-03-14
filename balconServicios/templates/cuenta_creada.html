@@ -1,1 +1,14 @@
-<h1>Cuenta creada con exito!!!</h1>
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<form class="padd" method="POST">
+    {% csrf_token %}
+    <h3>Cuenta creada exitosamente!</h3>
+    <button type="submit" class="btn btn-primary">Generar documento</button>
+    <a class="btn btn-primary"  href='{% url "Home" %}'>Regresar a la pagina principal</a>
+</form>
+
+
+{% endblock %}

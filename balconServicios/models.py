@@ -25,6 +25,7 @@ class Cuentas(models.Model):
     fecha_creacion = models.DateField('Fecha de creación', auto_now_add=True)
     tipo_cuenta = models.CharField('Tipo de Cuenta', max_length=10)
     saldo = models.FloatField('Saldo')
+    nombre_usuario = models.CharField('Nombre de Usuario', max_length= 20)
 
     def __str__(self):
         return self.numero_cuenta

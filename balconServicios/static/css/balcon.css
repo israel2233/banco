@@ -16,6 +16,7 @@
   }
 
   form{
+    position: relative;
     border: rgb(3, 3, 3) 1px solid;
     padding: 15px;
     border-radius: 25px;
