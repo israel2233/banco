@@ -1,24 +1,35 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% load static %} {% block content %}
 
-{% load static %}
-
-{% block content %}
-
-<h1>sasd</h1>
-
+<h1>Transacciones de ventanilla</h1>
 <div class="padd">
-  <form action="{% url 'Cuentas' %}" method="POST">
+  <form  method="POST" >
     {% csrf_token %}
     <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCuenta">Numero de Cuenta</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputCuenta"
+          placeholder="CA00001"
+          maxlength="7"
+          minlength="7"
+          required
+          name="numero_cuenta"
+          value="{{form.numero_cuenta}}"
+        />
+      </div>
+      <button type="submit" id="submit1" class="btn btn-primary col-md-6">Validar</button>
+
       <div class="form-group col-md-6">
         <label for="inputNombre">Nombre</label>
         <input
           type="text"
           class="form-control"
           id="inputNombre"
-          placeholder="Escriba el Nombre"
-          required
+          disabled
           name="nombre"
+          value="{{form.nombre}}"
         />
       </div>
       <div class="form-group col-md-6">
@@ -27,78 +38,111 @@
           type="text"
           class="form-control"
           id="inputApellido"
-          placeholder="Escriba el Apellido"
-          required
+          disabled
           name="apellido"
+          value="{{form.apellido}}"
         />
       </div>
+
       <div class="form-group col-md-6">
         <label for="inputCI">Identificación</label>
         <input
           type="text"
           class="form-control"
           id="inputCI"
-          placeholder="1003766001"
-          maxlength="10"
-          minlength="10"
-          onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-          required
+          disabled
           name="identificacion"
-        />
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Correo Electrónico</label>
-        <input
-          type="email"
-          class="form-control"
-          id="inputEmail4"
-          placeholder="Correo Electrónico"
-          required
-          name="correo_electronico"
-        />
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputDir">Dirección</label>
-      <input
-        type="text"
-        class="form-control"
-        id="inputDir"
-        placeholder="Lerida y Gonzales Suaréz, Quito"
-        required
-        name="direccion"
-      />
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputTelf">Telefono</label>
-        <input
-          type="text"
-          class="form-control"
-          id="inputTelf"
-          required
-          placeholder="029999999"
-          name="telefono"
+          value="{{form.identificacion}}"
         />
       </div>
       <div class="form-group col-md-6">
         <label for="inputTipo">Tipo de cuenta</label>
-        <select id="inputTipo" class="form-control" required name="tipo_cuenta">
-          <option selected value="Corriente">Corriente</option>
-          <option value="Ahorros">Ahorros</option>
-        </select>
+        <input id="inputTipo" class="form-control" disabled name="tipo_cuenta" value="{{form.tipo_cuenta}}">
+        </input>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary" >Crear</button>
   </form>
-
- 
-
 </div>
+
+{% if flag %}
+    <div class="text-center text-danger"><p >{{msg_error}}</p></div>
+
+
+{% endif %}
+
+{% if flag_error %}
+    <div class="text-center text-danger"><p >{{msg_error}}</p></div>
+
+
+{% endif %}
+
+{% if flag is False and flag_error is False %}
+<div class="padd" >
+<form  method="POST">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputTipo">Tipo transaccion</label>
+      <select id="inputTipo" class="form-control" required name="tipo">
+        <option selected value="CREDITO">Deposito</option>
+        <option value="DEBITO">Retiro</option>
+      </select>
+    </div>
+
+    
+    <div class="form-group col-md-3">
+      <label for="inputMontoD">Monto dolares</label>
+      <input
+        class="form-control"
+        id="inputMontoD"
+        placeholder="250"
+        required
+        name="montoD"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+      />
+    </div>
+    
+    <div class="form-group col-md-2">
+        <label for="inputMontoC">Centavos </label>
+        
+        <input
+          class="form-control"
+          id="inputMontoC"
+          placeholder="00"
+          value="0"
+          name="montoC"
+          maxlength="2"
+          onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+        />
+      </div>
+  </div>
+  <div  class="form-group col-md-6">
+    <!-- <label for="inputnum">No Cuenta </label> -->
+    <input
+        type="hidden"
+      class="form-control"
+      id="inputnum"
+      placeholder=""
+      name="numero_cuenta"
+      value="{{form.numero_cuenta}}"
+    />
+  </div>
+  
+  <div class="form-group col-md-6">
+    <!-- <label for="inputTipoC">Tipo de cuenta</label> -->
+    <input type="hidden" id="inputTipoC" class="form-control"  name="tipo_cuenta" value="{{form.tipo_cuenta}}">
+    </input>
+  </div>
+
+  
+  <button type="submit" class="btn btn-primary">Realizar</button>
+</form>
+</div>
+{% endif %}
+
+
+
 
 
 
 {% endblock %}
-
-
-
