@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'balconServicios',
     "bootstrap4",
+    "ventanillaServicios"
 ]
 
 MIDDLEWARE = [

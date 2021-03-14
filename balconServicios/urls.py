@@ -8,5 +8,3 @@ urlpatterns = [
     path('cuentas/', views.insertar_cuenta, name='Cuentas'),
     path('cuenta_c/', views.cuenta_creada, name= 'CuentaC')
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

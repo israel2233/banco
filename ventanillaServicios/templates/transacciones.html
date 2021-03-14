@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>sasd</h1>
+
+<div class="padd">
+  <form action="{% url 'Cuentas' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputNombre">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputNombre"
+          placeholder="Escriba el Nombre"
+          required
+          name="nombre"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputApellido">Apellido</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputApellido"
+          placeholder="Escriba el Apellido"
+          required
+          name="apellido"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputCI">Identificación</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputCI"
+          placeholder="1003766001"
+          maxlength="10"
+          minlength="10"
+          onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+          required
+          name="identificacion"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Correo Electrónico</label>
+        <input
+          type="email"
+          class="form-control"
+          id="inputEmail4"
+          placeholder="Correo Electrónico"
+          required
+          name="correo_electronico"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputDir">Dirección</label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputDir"
+        placeholder="Lerida y Gonzales Suaréz, Quito"
+        required
+        name="direccion"
+      />
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputTelf">Telefono</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputTelf"
+          required
+          placeholder="029999999"
+          name="telefono"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputTipo">Tipo de cuenta</label>
+        <select id="inputTipo" class="form-control" required name="tipo_cuenta">
+          <option selected value="Corriente">Corriente</option>
+          <option value="Ahorros">Ahorros</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" >Crear</button>
+  </form>
+
+ 
+
+</div>
+
+
+
+{% endblock %}
+
+
+
