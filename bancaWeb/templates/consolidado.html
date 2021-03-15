@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<h1>Informacion de tu cuenta</h1>
+<div class="padd">
+
+
+<ul class="list-group">
+    <li class="list-group-item">Nombres: {{nombres}}</li>
+    <li class="list-group-item">Numero de cuenta: {{numero_cuenta}}</li>
+    <li class="list-group-item">Saldo actual: {{saldo}}</li>
+  </ul>
+  <br>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <a type="button" class="btn btn-secondary mr-5" href="{% url 'Historial' numero_cuenta %}">Historial</a>
+    
+    <a type="button" class="btn btn-secondary mr-5 " href="{% url 'Transaccion' numero_cuenta %}" >Transaccion</a>
+    
+
+  </div>
+</div>
+{% endblock %}

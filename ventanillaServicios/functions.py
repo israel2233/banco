@@ -15,7 +15,7 @@ def validar_monto(tipo:str, monto:float)->bool:
     return determinante
 
 def generar_numero_movimiento(numero:int)->str:
-    return ((9 - len(str(numero)))*'0')+str(numero+1)
+    return ((9 - len(str(numero+1)))*'0')+str(numero+1)
 
 
 

@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'balconServicios',
     "bootstrap4",
-    "ventanillaServicios"
+    "ventanillaServicios",
+    "bancaWeb"
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'segundobanconacional@gmail.com'
+EMAIL_HOST_PASSWORD = 'segundobanco'
+EMAIL_USE_TLS = True

@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('balconServicios.urls')),
 
-    path('',include('ventanillaServicios.urls'))
+    path('',include('ventanillaServicios.urls')),
+    path('',include('bancaWeb.urls')),
 ]
